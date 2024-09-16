@@ -17,4 +17,6 @@ Router.map(function () {
   this.route('statistics');
   this.route('login');
   this.route('mock-login');
+  this.route('example-form');
+  this.route('example-form-instance', { path: '/example-form/:id' });
 });

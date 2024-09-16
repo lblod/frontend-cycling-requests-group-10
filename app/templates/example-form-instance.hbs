@@ -1,0 +1,9 @@
+{{page-title "ExampleFormInstance"}}
+<Form::Instance
+  @instanceId={{this.model.id}}
+  @form={{this.model.form}}
+  @onCancel={{this.toggleModal}}
+  @onSave={{this.onSave}}
+  @formInitialized={{fn (mut this.formInitialized) true}}
+/>
+{{outlet}}

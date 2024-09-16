@@ -1,0 +1,54 @@
+{{#unless this.setupFormForTtl.isRunning}}
+  <section>
+    <RdfForm
+      @groupClass="au-o-grid__item"
+      @form={{this.formInfo.form}}
+      @show={{false}}
+      @graphs={{this.formInfo.graphs}}
+      @sourceNode={{this.formInfo.sourceNode}}
+      @formStore={{this.formInfo.formStore}}
+      @forceShowErrors={{this.forceShowErrors}}
+      @useNewListingLayout={{true}}
+      @level={{2}}
+      class="au-u-max-width-medium"
+    />
+    {{yield}}
+  </section>
+
+  {{#if this.errorMessage}}
+    <AuAlert @skin="error" @title="Fout" @icon="alert-triangle">
+      {{this.errorMessage}}
+    </AuAlert>
+  {{/if}}
+
+  <AuToolbar as |Group|>
+    <Group>
+      <AuButtonGroup>
+        <AuButton
+          {{on "click" (perform this.save)}}
+          @disabled={{or this.save.isRunning (not this.hasChanges)}}
+        >Pas aan</AuButton>
+        {{#if @onCancel}}
+          <Form::CancelWithConfirm
+            @cancel={{@onCancel}}
+          >Annuleer</Form::CancelWithConfirm>
+        {{/if}}
+      </AuButtonGroup>
+    </Group>
+  </AuToolbar>
+
+  <Form::TripleContent @triples={{this.sourceTriples}} />
+  {{#if @showHistory}}
+    <section class="au-u-margin-top-small">
+      <AuHeading @level="2" @skin="4" class="au-u-margin-bottom-small">
+        History
+      </AuHeading>
+
+      <Form::History
+        @instanceId={{@instanceId}}
+        @form={{@form}}
+        @onRestore={{this.onRestore}}
+      />
+    </section>
+  {{/if}}
+{{/unless}}
