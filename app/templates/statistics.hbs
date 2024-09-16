@@ -1,0 +1,32 @@
+{{page-title "Statistics"}}
+<div class="au-c-body-container au-c-body-container--scroll">
+  <div class="au-o-box">
+
+    <h1 class="au-u-h2 au-u-margin-bottom-small">Example statistics</h1>
+
+    <AuTable @size={{this.size}}>
+      <:header>
+        <tr>
+          <th>Rank</th>
+          <th>Type</th>
+          <th># Triples Gelinkt</th>
+        </tr>
+      </:header>
+      <:body>
+        {{#each this.model as |stat index|}}
+          <tr>
+            <td>{{add index 1}}</td>
+            <td>{{stat.type.value}}</td>
+            <td>{{stat.count.value}}</td>
+          </tr>
+        {{else}}
+          <tr>
+            <td colspan="4">Geen instanties gevonden</td>
+          </tr>
+        {{/each}}
+      </:body>
+    </AuTable>
+
+    {{outlet}}
+  </div>
+</div>

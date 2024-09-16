@@ -1,0 +1,13 @@
+{{! the role="menu" is added by the AuDropdown component, so we can ignore the rule here.}}
+{{! template-lint-disable require-context-role}}
+<AuDropdown
+  @alignment="left"
+  @title="Menu modules"
+  @buttonLabel="Account settings"
+>
+  <AuLink @route="statistics" role="menuitem">
+    <AuIcon @icon="circle-step-1" @alignment="left" />
+    Statistics
+  </AuLink>
+
+</AuDropdown>

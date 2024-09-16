@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   const ENV = {
-    modulePrefix: 'frontend-lblod-statistics',
+    modulePrefix: 'frontend-hackathon',
     environment,
     rootURL: '/',
     locationType: 'history',
@@ -17,6 +17,14 @@ module.exports = function (environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    acmidm: {
+      clientId: '{{ACMIDM_CLIENT_ID}}',
+      scope: 'openid vo profile abb_loketLB',
+      authUrl: '{{ACMIDM_AUTH_URL}}',
+      logoutUrl: '{{ACMIDM_LOGOUT_URL}}',
+      authRedirectUrl: '{{ACMIDM_AUTH_REDIRECT_URL}}',
+      switchRedirectUrl: '{{ACMIDM_SWITCH_REDIRECT_URL}}',
     },
   };
 
