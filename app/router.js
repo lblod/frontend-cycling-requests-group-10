@@ -14,6 +14,8 @@ Router.map(function () {
     this.route('switch');
   });
 
+  this.route('index', { path: '' });
+
   this.route('statistics');
   this.route('login');
   this.route('mock-login');
