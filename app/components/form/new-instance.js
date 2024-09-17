@@ -47,7 +47,11 @@ export default class NewInstanceComponent extends Component {
     console.log(this.args.onSubmit());
     // make it works, prettify later
     if (this.args.onSubmit) {
-      this.args.onSubmit();
+      this.args.onSubmit(
+        this.formInfo.sourceNode.value,
+        this.formInfo.definition.id,
+        ttlCode
+      );
     }
 
 

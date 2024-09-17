@@ -1,8 +1,9 @@
 import Route from '@ember/routing/route';
-import { getFormFrom } from '../../../utils/get-form';
+import { getFormFrom } from '../../utils/get-form';
 import { service } from '@ember/service';
 
-export default class RequestsNewIdentityRoute extends Route {
+export default class RequestsNewIndexRoute extends Route {
+    
   @service store;
   async model() {
     const form = (this.createPersonFormDefinition = await getFormFrom(
