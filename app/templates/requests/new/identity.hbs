@@ -1,0 +1,9 @@
+{{page-title "Nieuwe aanvraag"}}
+
+<Form::NewInstance
+  @onCreate={{this.onSelectNewPerson}}
+  @form={{this.model.form}}
+  @onCancel={{this.closeModal}}
+  @buildSourceTtl={{this.buildSourceTtl}}
+/>
+{{outlet}}
