@@ -43,27 +43,35 @@ export default class NewInstanceComponent extends Component {
         'Niet alle velden zijn correct ingevuld. Probeer het later opnieuw.';
       return;
     }
-
-    const result = await this.formRepository.createFormInstance(
-      this.formInfo.sourceNode.value,
-      this.formInfo.definition.id,
-      ttlCode
-    );
-
-    if (result.errorMessage) {
-      this.errorMessage = result.errorMessage;
-      return;
+    console.log('Saving form instance...');
+    console.log(this.args.onSubmit());
+    // make it works, prettify later
+    if (this.args.onSubmit) {
+      this.args.onSubmit();
     }
 
-    // Success
-    notifyFormSavedSuccessfully(this.toaster);
 
-    if (this.args.onCreate) {
-      this.args.onCreate({
-        instanceTtl: ttlCode,
-        instanceId: result.id,
-      });
-    }
+    // TODO: will save later
+    // const result = await this.formRepository.createFormInstance(
+    //   this.formInfo.sourceNode.value,
+    //   this.formInfo.definition.id,
+    //   ttlCode
+    // );
+
+    // if (result.errorMessage) {
+    //   this.errorMessage = result.errorMessage;
+    //   return;
+    // }
+
+    // // Success
+    // notifyFormSavedSuccessfully(this.toaster);
+
+    // if (this.args.onCreate) {
+    //   this.args.onCreate({
+    //     instanceTtl: ttlCode,
+    //     instanceId: result.id,
+    //   });
+    // }
   });
 
   setupNewForm = task(async () => {
