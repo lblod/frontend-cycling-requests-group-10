@@ -16,6 +16,17 @@ Router.map(function () {
 
   this.route('index', { path: '' });
 
+  this.route('requests', { path: '/aanvragen' }, function () {
+    this.route('new', { path: '/nieuw' }, function () {
+      this.route('identity', { path: '/identiteit' });
+      this.route('route-description', { path: '/routebeschrijving' });
+      this.route('extra-info', { path: '/extra-informatie' });
+    });
+    this.route('request', { path: '/:id' }, function () {
+      this.route('edit', { path: '/bewerken' });
+    });
+  });
+
   this.route('statistics');
   this.route('login');
   this.route('mock-login');
