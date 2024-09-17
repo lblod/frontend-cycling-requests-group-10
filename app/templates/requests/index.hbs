@@ -1,0 +1,27 @@
+{{page-title "Aanvragen"}}
+
+<AuHeading
+      @level={{3}}
+    >
+        Aanvragen
+    </AuHeading>
+
+{{!-- Create new --}}
+<AuLink
+    @route="requests.new.identity"
+    @icon="add"
+    @iconAlignment="left"
+    @skin="button"
+    >
+    Nieuw
+    </AuLink>
+
+
+{{#if (eq this.model.requests.length 0)}}
+  <p>Er zijn geen aanvragen.</p>
+{{else}}
+    <AuTable
+    @data={{this.model.requests}}
+/>
+{{/if}}
+    
