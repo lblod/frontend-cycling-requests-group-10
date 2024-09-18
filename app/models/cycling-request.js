@@ -11,5 +11,5 @@ export default class CyclingRequestModel extends Model {
   @belongsTo('request-state-classification') state;
 
   @hasMany('route-section') routeSections;
-  // @hasMany('approval-by-commune') approvals;
+  @hasMany('approval-by-commune', { async: true }) approvals;
 }
