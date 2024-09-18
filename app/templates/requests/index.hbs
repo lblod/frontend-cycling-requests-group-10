@@ -41,6 +41,11 @@
           @currentSorting={{this.sort}}
           @label="Datum"
         />
+        <AuDataTableThSortable
+          @field="state"
+          @currentSorting={{this.sort}}
+          @label="Status"
+        />
       </c.header>
       <c.body as |row|>
         <td><AuLink @route="requests.request" @model={{row.id}}>
@@ -49,6 +54,7 @@
         </td>
         <td>{{row.organizerName}}</td>
         <td>{{row.raceDate}}</td>
+        <RequestStatus @state={{row.state}} />
       </c.body>
     </t.content>
   </AuDataTable>
