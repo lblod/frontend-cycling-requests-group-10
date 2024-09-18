@@ -49,6 +49,11 @@ export default class RequestsNewRouteDescriptionController extends Controller {
     console.log('onNext', arguments);
     // by pass next step for now, go directly on page detail
     // this.transitionToRoute(this.nextStep);
+    // TODO create items
+    await fetch(
+      `/cycling/mock/create-agenda-items/${this.model.cyclingRequest.id}`,
+      { method: 'POST' }
+    );
     this.transitionToRoute('requests.request', {
       id: (await this.model.cyclingRequest).id,
     });
