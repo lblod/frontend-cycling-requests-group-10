@@ -1,0 +1,8 @@
+{{page-title "Agendapunten"}}
+{{#each @model as |approval|}}
+  <p>{{approval.name}}</p>
+  {{#each approval.agendaItems as |agendaItem|}}
+    <h1>{{agendaItem.titel}}</h1>
+    <p>{{agendaItem.beschrijving}}</p>
+  {{/each}}
+{{/each}}

@@ -5,6 +5,7 @@ export default class RequestsIndexRoute extends Route {
   @service store;
 
   async model() {
+    debugger
     const requests = await this.store.findAll('cycling-request');
 
     return {

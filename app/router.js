@@ -22,8 +22,9 @@ Router.map(function () {
       this.route('route-description', { path: '/routebeschrijving' });
       this.route('extra-info', { path: '/extra-informatie' });
     });
-    this.route('request', { path: '/:id' }, function () {
+    this.route('request', { path: '/:request_id' }, function () {
       this.route('edit', { path: '/bewerken' });
+      this.route('agenda-items', { path: '/agendapunten' });
     });
   });
 
