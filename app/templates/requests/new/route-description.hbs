@@ -6,10 +6,84 @@
 </AuHeading>
 
 <form class="au-c-form" {{on "submit" (perform this.save)}}>
+  {{! Section to edit this.model.cyclingRequest.routeSections (routeSections is an array)}}
+  <AuHeading @level="3" @skin="5" class="au-u-margin-bottom-tiny">
+    Route Segment
+  </AuHeading>
+
+  <AuDataTable
+    @content={{this.model.cyclingRequest.routeSections}}
+    @fields="timeOfPassingStart timeOfPassingEnd distance"
+    as |t|
+  >
+    <t.content class="au-c-data-table__table--small" as |c|>
+      <c.header>
+        <th>Doorgang beginnen</th>
+        <th>Doorgang eindigen</th>
+        <th>Afstand</th>
+        <th>Gebruikt werkingsgebied</th>
+        <th></th>
+      </c.header>
+      <c.body as |row|>
+        <td>
+          <AuDateInput
+            {{!-- @error={{hasError}} --}}
+            @id="time-of-passing-start"
+            @value={{row.timeOfPassingStart}}
+            @onChange={{fn (mut row.timeOfPassingStart)}}
+          />
+        </td>
+        <td><AuDateInput
+            {{!-- @error={{hasError}} --}}
+            @id="time-of-passing-end"
+            @value={{row.timeOfPassingEnd}}
+            @onChange={{fn (mut row.timeOfPassingEnd)}}
+          /></td>
+        <td>
+          <AuInput
+            @id="distance"
+            type="number"
+            pattern="\d*"  {{!-- only allow digits --}}
+            @value={{row.distance}}
+            @onChange={{fn (mut row.distance)}}
+          />
+        </td>
+        <td>{{row.areas}}</td>
+        <td>
+          <AuButton
+            @alert={{true}}
+            @icon="bin"
+            @iconAlignment="left"
+            @skin="link"
+            {{on "click" (fn this.removeRouteSegment row)}}
+          >
+            Verwijder
+          </AuButton>
+        </td>
+      </c.body>
+    </t.content>
+  </AuDataTable>
+
+  <div class="au-o-box au-o-box--small">
+    <AuButton
+      @skin="secondary"
+      @width="block"
+      @icon="add"
+      @iconAlignment="left"
+      {{on "click" this.addRouteSegment}}
+    >
+      Voeg nieuwe route segment toe
+    </AuButton>
+  </div>
 
   <AuFormRow>
     <AuButtonGroup>
-      <AuButton>
+      <AuButton
+        @disabled={{or
+          (not this.model.cyclingRequest.routeSections.length)
+          this.save.isRunning
+        }}
+      >
         Volgende
       </AuButton>
       {{!-- <AuButton @skin="link" {{on "click" this.onBack}}>

@@ -10,4 +10,9 @@ export default class RequestsNewRouteDescriptionRoute extends Route {
       this.transitionTo('requests.new.identity');
     }
   }
+
+  setupController(controller, model) {
+    super.setupController(controller, model);
+    controller.initialize();
+  }
 }

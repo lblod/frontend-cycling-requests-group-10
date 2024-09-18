@@ -7,4 +7,7 @@ export default class RouteSectionModel extends Model {
   @attr('number') distance;
 
   @hasMany('address') areas;
+  
+  // @hasMany('grant') grants;
+  // @hasMany('refusal') refusals;
 }
