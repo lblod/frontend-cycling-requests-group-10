@@ -22,6 +22,7 @@
         <th>Doorgang eindigen</th>
         <th>Afstand</th>
         <th>Gebruikt werkingsgebied</th>
+        <th>Description</th>
         <th></th>
       </c.header>
       <c.body as |row|>
@@ -43,9 +44,17 @@
           <InputComponent
             id="distance"
             type="number"
-            pattern="\d*"  {{!-- only allow digits --}}
+            pattern="\d*"
+            {{! only allow digits }}
             @value={{row.distance}}
             @onChange={{fn (mut row.distance)}}
+          />
+        </td>
+        <td>
+          <InputComponent
+            id="area"
+            @value={{row.firstFullAddress}}
+            @onChange={{fn (mut row.firstAddress.fullAddress)}}
           />
         </td>
         <td>

@@ -15,4 +15,8 @@ export default class RouteSectionModel extends Model {
   get firstFullAddress() {
     return this.areas.firstObject.fullAddress;
   }
+
+  get firstAddress() {
+    return this.areas.firstObject;
+  }
 }

@@ -24,7 +24,10 @@ export default class RequestsNewRouteDescriptionController extends Controller {
   async addRouteSegment() {
     const routeSections = await this.getRouteSections();
     // create empty address as a shortcut, no time to handel multiples addresses
-    const emptyAddress = this.store.createRecord('address');
+    const emptyAddress = this.store.createRecord('address', {
+      municipality: 'Gent',
+    });
+    await emptyAddress.save();
     const newRouteSegment = this.store.createRecord('route-section', {
       areas: [emptyAddress],
       created: new Date().toString(),
