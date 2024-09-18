@@ -17,19 +17,17 @@ export default class RequestsNewRouteDescriptionController extends Controller {
   }
 
   async getRouteSections() {
-    return (await this.model.cyclingRequest).get("routeSections")
+    return (await this.model.cyclingRequest).get('routeSections');
   }
 
   @action
   async addRouteSegment() {
     const routeSections = await this.getRouteSections();
-    // create empty address as a shortcut, no time to handel multiples addresses 
+    // create empty address as a shortcut, no time to handel multiples addresses
     const emptyAddress = this.store.createRecord('address');
-    const newRouteSegment = this.store.createRecord('route-section', 
-      {
-        areas: [emptyAddress]
-      }
-    );
+    const newRouteSegment = this.store.createRecord('route-section', {
+      areas: [emptyAddress],
+    });
 
     routeSections.push(newRouteSegment);
   }
@@ -42,7 +40,7 @@ export default class RequestsNewRouteDescriptionController extends Controller {
   }
 
   @action
-  editAddress(segment) {
+  editAddress() {
     console.log('editAddress', arguments);
   }
 
@@ -51,7 +49,9 @@ export default class RequestsNewRouteDescriptionController extends Controller {
     console.log('onNext', arguments);
     // by pass next step for now, go directly on page detail
     // this.transitionToRoute(this.nextStep);
-    this.transitionToRoute('requests.request', { id: (await this.model.cyclingRequest).id });
+    this.transitionToRoute('requests.request', {
+      id: (await this.model.cyclingRequest).id,
+    });
   }
 
   @action

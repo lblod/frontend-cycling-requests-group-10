@@ -8,8 +8,11 @@ export default class RequestsNewIdentityController extends Controller {
   nextStep = 'requests.new.route-description';
 
   @action
-  async onSubmit({instanceId}) {
-    this.model.cyclingRequest = await this.store.findRecord('cycling-request', instanceId);
+  async onSubmit({ instanceId }) {
+    this.model.cyclingRequest = await this.store.findRecord(
+      'cycling-request',
+      instanceId
+    );
     console.log('onSubmit', arguments);
     console.log('this.model.cycleRequest', this.model.cyclingRequest);
     this.transitionToRoute(this.nextStep);

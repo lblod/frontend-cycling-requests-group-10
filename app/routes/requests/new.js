@@ -3,7 +3,6 @@ import { getFormFrom } from '../../utils/get-form';
 import { service } from '@ember/service';
 
 export default class RequestsNewIndexRoute extends Route {
-    
   @service store;
   async model() {
     const formIdentity = (this.createPersonFormDefinition = await getFormFrom(
@@ -14,7 +13,7 @@ export default class RequestsNewIndexRoute extends Route {
     const cyclingRequest = null;
     return {
       formIdentity,
-      cyclingRequest
+      cyclingRequest,
     };
   }
 }
