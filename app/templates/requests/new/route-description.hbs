@@ -1,16 +1,22 @@
 {{page-title "Nieuwe aanvraag"}}
 
 <AuHeading @level={{3}}>
-  {{this.model.cyclingRequest.raceName}} - routebeschrijving
+  {{this.model.cyclingRequest.raceName}}
+  - routebeschrijving
 </AuHeading>
 
+<form class="au-c-form" {{on "submit" (perform this.save)}}>
 
+  <AuFormRow>
+    <AuButtonGroup>
+      <AuButton>
+        Volgende
+      </AuButton>
+      {{!-- <AuButton @skin="link" {{on "click" this.onBack}}>
+        Terug
+      </AuButton> --}}
+    </AuButtonGroup>
+  </AuFormRow>
+</form>
 
-{{!-- <Form::NewInstance
-  @onCreate={{this.onSelectNewPerson}}
-  @form={{this.model.form}}
-  @onCancel={{this.closeModal}}
-  @buildSourceTtl={{this.buildSourceTtl}}
-  @onSubmit={{this.onSubmit}}
-/> --}}
 {{outlet}}
