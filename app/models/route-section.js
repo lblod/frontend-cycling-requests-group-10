@@ -4,6 +4,7 @@ export default class RouteSectionModel extends Model {
   @attr('date') created;
   @attr('date') timeOfPassingStart;
   @attr('date') timeOfPassingEnd;
+  @attr('string') description;
   @attr('number') distance;
 
   @hasMany('address') areas;

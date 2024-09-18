@@ -27,6 +27,7 @@ export default class RequestsNewRouteDescriptionController extends Controller {
     const emptyAddress = this.store.createRecord('address');
     const newRouteSegment = this.store.createRecord('route-section', {
       areas: [emptyAddress],
+      created: new Date().toString(),
     });
 
     routeSections.push(newRouteSegment);
@@ -47,7 +48,18 @@ export default class RequestsNewRouteDescriptionController extends Controller {
   @action
   async onNext() {
     console.log('onNext', arguments);
-    // by pass next step for now, go directly on page detail
+    await Promise.all(
+      (
+        await this.getRouteSections()
+      ).map(async (section) => {
+        await section.save();
+      })
+    );
+
+    await (await this.model.cyclingRequest).save();
+
+    console.log('onNext', await this.model.cyclingRequest);
+
     // this.transitionToRoute(this.nextStep);
     // TODO create items
     await fetch(

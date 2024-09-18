@@ -40,8 +40,8 @@
             @onChange={{fn (mut row.timeOfPassingEnd)}}
           /></td>
         <td>
-          <AuInput
-            @id="distance"
+          <InputComponent
+            id="distance"
             type="number"
             pattern="\d*"  {{!-- only allow digits --}}
             @value={{row.distance}}
@@ -49,11 +49,12 @@
           />
         </td>
         <td>
-          <AuInput
-            @id="address"
-            {{!-- @value={{row.firstFullAddress}} --}}
-            @onChange={{this.editAddress}}
-          /></td>
+          <InputComponent
+            id="description"
+            @value={{row.description}}
+            @onChange={{fn (mut row.description)}}
+          />
+        </td>
         <td>
           <AuButton
             @alert={{true}}
