@@ -1,0 +1,11 @@
+{{page-title "Agendapunten"}}
+<div class="au-o-box au-o-flow au-o-flow--large">
+  <AuContent>
+    {{#each @model as |approval|}}
+      <h3>{{approval.name}}</h3>
+      <h4>{{approval.consideration.titel}}</h4>
+      <p>{{approval.consideration.beschrijving}}</p>
+      <p></p>
+    {{/each}}
+  </AuContent>
+</div>
