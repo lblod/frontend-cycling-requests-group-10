@@ -1,49 +1,52 @@
 {{page-title "Aanvragen"}}
 
-<AuDataTable 
-    @content={{this.model.requests}} 
+<div class="au-o-box au-o-flow au-o-flow--large">
+
+  <AuDataTable
+    @content={{this.model.requests}}
     @fields="raceName organizerName raceDate"
-    as |t|>
-  <t.menu as |menu|>
-    <menu.general>
-      <PageHeader class="au-o-box">
-        <:title>Aanvragen</:title>
-        <:action>
-          <AuLink
-            @route="requests.new.identity"
-            @icon="add"
-            @iconAlignment="left"
-            @skin="button"
-          >
-            Nieuw
-          </AuLink>
-        </:action>
-      </PageHeader>
-    </menu.general>
-  </t.menu>
-  <t.content class="au-c-data-table__table--small" as |c|>
-    <c.header>
-      <AuDataTableThSortable
-        @field="raceName"
-        @currentSorting={{this.sort}}
-        @label="Naam"
-      />
-      <AuDataTableThSortable
-        @field="create"
-        @currentSorting={{this.sort}}
-        @label="Organisator"
-      />
-      <AuDataTableThSortable
-        @field="create"
-        @currentSorting={{this.sort}}
-        @label="Datum"
-      />
-    </c.header>
-    <c.body as |row|>
-      <td>{{row.raceName}}</td>
-      <td>{{row.organizerName}}</td>
-      <td>{{row.raceDate}}</td>
-    </c.body>
-  </t.content>
-</AuDataTable>
-    
+    as |t|
+  >
+    <t.menu as |menu|>
+      <menu.general>
+        <PageHeader class="au-o-box">
+          <:title>Aanvragen</:title>
+          <:action>
+            <AuLink
+              @route="requests.new.identity"
+              @icon="add"
+              @iconAlignment="left"
+              @skin="button"
+            >
+              Nieuw
+            </AuLink>
+          </:action>
+        </PageHeader>
+      </menu.general>
+    </t.menu>
+    <t.content class="au-c-data-table__table--small" as |c|>
+      <c.header>
+        <AuDataTableThSortable
+          @field="raceName"
+          @currentSorting={{this.sort}}
+          @label="Naam"
+        />
+        <AuDataTableThSortable
+          @field="create"
+          @currentSorting={{this.sort}}
+          @label="Organisator"
+        />
+        <AuDataTableThSortable
+          @field="create"
+          @currentSorting={{this.sort}}
+          @label="Datum"
+        />
+      </c.header>
+      <c.body as |row|>
+        <td>{{row.raceName}}</td>
+        <td>{{row.organizerName}}</td>
+        <td>{{row.raceDate}}</td>
+      </c.body>
+    </t.content>
+  </AuDataTable>
+</div>
