@@ -5,7 +5,9 @@ export default class RequestsIndexRoute extends Route {
   @service store;
 
   async model() {
-    const requests = await this.store.findAll('cycling-request');
+    const requests = await this.store.findAll('cycling-request', {
+      include: 'state',
+    });
 
     return {
       requests,
