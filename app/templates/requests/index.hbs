@@ -1,23 +1,5 @@
 {{page-title "Aanvragen"}}
 
-<AuHeading
-      @level={{3}}
-    >
-        Aanvragen
-    </AuHeading>
-
-{{!-- Create new --}}
-<AuLink
-    @route="requests.new.identity"
-    @icon="add"
-    @iconAlignment="left"
-    @skin="button"
-    >
-    Nieuw
-    </AuLink>
-
-
-
 <AuDataTable 
     @content={{this.model.requests}} 
     @fields="raceName organizerName raceDate"
