@@ -1,14 +1,16 @@
 {{page-title "Nieuwe aanvraag"}}
 
 <AuHeading @level={{3}}>
-  New aanvragen - routebeschrijving
+  {{this.model.cyclingRequest.raceName}} - routebeschrijving
 </AuHeading>
 
-<Form::NewInstance
+
+
+{{!-- <Form::NewInstance
   @onCreate={{this.onSelectNewPerson}}
   @form={{this.model.form}}
   @onCancel={{this.closeModal}}
   @buildSourceTtl={{this.buildSourceTtl}}
   @onSubmit={{this.onSubmit}}
-/>
+/> --}}
 {{outlet}}
