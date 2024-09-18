@@ -23,7 +23,7 @@ export default class RequestsRequestAgendaItemsRoute extends Route {
         const consideration = await considerationFetch.json();
 
         return {
-          name: municipality.data.attributes.uri,
+          name: municipality.data.attributes.name,
           consideration: consideration.data.attributes,
         };
       })
