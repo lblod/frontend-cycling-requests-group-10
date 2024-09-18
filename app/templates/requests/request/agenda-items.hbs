@@ -1,8 +1,11 @@
 {{page-title "Agendapunten"}}
-{{#each @model as |approval|}}
-  <p>{{approval.name}}</p>
-  {{#each approval.agendaItems as |agendaItem|}}
-    <h1>{{agendaItem.titel}}</h1>
-    <p>{{agendaItem.beschrijving}}</p>
-  {{/each}}
-{{/each}}
+<div class="au-o-box au-o-flow au-o-flow--large">
+  <AuContent>
+    {{#each @model as |approval|}}
+      <p>{{approval.name}}</p>
+      <h4>{{approval.consideration.titel}}</h4>
+      <p>{{approval.consideration.beschrijving}}</p>
+      <p></p>
+    {{/each}}
+  </AuContent>
+</div>

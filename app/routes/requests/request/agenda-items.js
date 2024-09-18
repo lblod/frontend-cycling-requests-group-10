@@ -15,24 +15,16 @@ export default class RequestsRequestAgendaItemsRoute extends Route {
       include: 'municipality'
     })
     const json = await results.json()
-    debugger
     return await Promise.all(
       json.data.map(async (approval) => {
         const municipalityFetch = await fetch(approval.relationships.municipality.links.self)
-        const municipality = await approval.municipality;
-        const [consideration, takingDomain, approvalMayor] = await Promise.all([
-          approval.consideration,
-          approval.takingDomain,
-          approval.approvalMayor,
-        ]);
+        const municipality = await municipalityFetch.json();
+        const considerationFetch = await fetch(approval.relationships.consideration.links.self);
+        const consideration = await considerationFetch.json();
 
         return {
-          name: municipality.name,
-          agendaItems: {
-            consideration,
-            takingDomain,
-            approvalMayor,
-          },
+          name: municipality.data.attributes.uri,
+          consideration: consideration.data.attributes,
         };
       })
     );
