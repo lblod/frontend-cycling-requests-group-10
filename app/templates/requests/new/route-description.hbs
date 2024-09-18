@@ -48,7 +48,12 @@
             @onChange={{fn (mut row.distance)}}
           />
         </td>
-        <td>{{row.areas}}</td>
+        <td>
+          <AuInput
+            @id="address"
+            {{!-- @value={{row.firstFullAddress}} --}}
+            @onChange={{this.editAddress}}
+          /></td>
         <td>
           <AuButton
             @alert={{true}}
@@ -83,6 +88,7 @@
           (not this.model.cyclingRequest.routeSections.length)
           this.save.isRunning
         }}
+        {{on "click" this.onNext}}
       >
         Volgende
       </AuButton>

@@ -23,7 +23,13 @@ export default class RequestsNewRouteDescriptionController extends Controller {
   @action
   async addRouteSegment() {
     const routeSections = await this.getRouteSections();
-    const newRouteSegment = this.store.createRecord('route-section');
+    // create empty address as a shortcut, no time to handel multiples addresses 
+    const emptyAddress = this.store.createRecord('address');
+    const newRouteSegment = this.store.createRecord('route-section', 
+      {
+        areas: [emptyAddress]
+      }
+    );
 
     routeSections.push(newRouteSegment);
   }
@@ -36,9 +42,16 @@ export default class RequestsNewRouteDescriptionController extends Controller {
   }
 
   @action
-  onNext() {
+  editAddress(segment) {
+    console.log('editAddress', arguments);
+  }
+
+  @action
+  async onNext() {
     console.log('onNext', arguments);
-    this.transitionToRoute(this.nextStep);
+    // by pass next step for now, go directly on page detail
+    // this.transitionToRoute(this.nextStep);
+    this.transitionToRoute('requests.request', { id: (await this.model.cyclingRequest).id });
   }
 
   @action
