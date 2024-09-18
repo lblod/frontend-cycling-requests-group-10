@@ -5,10 +5,9 @@
 </AuHeading>
 
 <Form::NewInstance
-  @onCreate={{this.onSelectNewPerson}}
-  @form={{this.model.form}}
+  @onCreate={{this.onSubmit}}
+  @form={{this.model.formIdentity}}
   @onCancel={{this.closeModal}}
   @buildSourceTtl={{this.buildSourceTtl}}
-  @onSubmit={{this.onSubmit}}
 />
 {{outlet}}
